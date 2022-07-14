@@ -18,7 +18,7 @@ namespace EmpWageCalculation
         {
             int totalEmpWage = 0, totalEmpHrs = 0, totalworkingDays = 0,empHours = 0;
 
-            while (totalEmpHrs <= MAX_WORKING_HOURS && totalworkingDays <= MAX_WORKING_DAYS)
+            while (totalEmpHrs <= MAX_WORKING_HOURS && totalworkingDays < MAX_WORKING_DAYS)
             {
                 totalworkingDays++;
                 Random random = new Random();
