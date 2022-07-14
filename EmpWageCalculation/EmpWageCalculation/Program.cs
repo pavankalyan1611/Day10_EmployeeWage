@@ -2,4 +2,4 @@
 using EmpWageCalculation;
 
 EmpWages emp = new EmpWages();
-emp.AddingPartTime();
+emp.UsingSwitch();
