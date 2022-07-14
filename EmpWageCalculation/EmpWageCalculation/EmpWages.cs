@@ -8,8 +8,7 @@ namespace EmpWageCalculation
 {
     public class EmpWages
     {
-        public const int EMP_ABSENT = 0, PART_TIME = 1, FULL_TIME = 2, EMP_RATE_PER_HOUR = 20, FULL_TIME_HOURS = 8, PART_TIME_HOURS = 4;
-        public const int MAX_WORKING_HOURS = 100, MAX_WORKING_DAYS = 20;
+        public const int EMP_ABSENT = 0, PART_TIME = 1, FULL_TIME = 2, FULL_TIME_HOURS = 8, PART_TIME_HOURS = 4;
         public EmpWages()
         {
             Console.WriteLine("Welcome To Employee Wage Problem:\n");
@@ -18,7 +17,7 @@ namespace EmpWageCalculation
         {
             int totalEmpHrs = 0, totalworkingDays = 0,empHours = 0;
 
-            while (totalEmpHrs <= MAX_WORKING_HOURS && totalworkingDays < MAX_WORKING_DAYS)
+            while (totalEmpHrs <= maxHoursPerMonth && totalworkingDays < NumOfworkingDays)
             {
                 totalworkingDays++;
                 Random random = new Random();
@@ -38,7 +37,7 @@ namespace EmpWageCalculation
                 totalEmpHrs += empHours;
                 Console.WriteLine($"Day {totalworkingDays}; emp Hours{empHours}" );
             }
-            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+            int totalEmpWage = totalEmpHrs * empRatePerHour;
             Console.WriteLine(" Total Emp Wage For Compeny : "+company+" is " + totalEmpWage +"\n");
 
             return totalEmpWage;
