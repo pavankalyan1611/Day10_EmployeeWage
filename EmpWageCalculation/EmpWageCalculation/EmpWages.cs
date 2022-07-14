@@ -8,36 +8,29 @@ namespace EmpWageCalculation
 {
     public class EmpWages
     {
-        public const int EMP_PRESENT = 1, EMP_RATE_PER_HOUR = 20, FULL_TIME = 8, PART_TIME = 4;
+        public const int PART_TIME = 1, FULL_TIME = 2, EMP_RATE_PER_HOUR = 20, FULL_TIME_HOURS = 8, PART_TIME_HOURS = 4;
         int empHours = 0;
-        public bool PresentAbsent()
+        int EmpWage = 0;
+        public void AddingPartTime()
         {
             Random random = new Random();
-            int empCheck = random.Next(0, 2);
+            int empCheck = random.Next(0, 3);
 
-            if (empCheck == EMP_PRESENT)
+            if (empCheck == PART_TIME)
             {
-                Console.WriteLine("Employee is Present");
-                return true;
-
+                Console.WriteLine("Employee is Present For Part Time ");
+                empHours = PART_TIME_HOURS;
             }
-            else
+            else if (empCheck == FULL_TIME)
             {
-                Console.WriteLine("Employee is Absent");
-                return false;
+                Console.WriteLine("Employee is Present For Full Time ");
+                empHours = FULL_TIME_HOURS;
             }
-           
+            else            
+                Console.WriteLine("Employee is Absent ");
+            
+            EmpWage = EMP_RATE_PER_HOUR * empHours;
+            Console.WriteLine($"Emp Wage : {EmpWage}");
         }
-        public void CalDailyWage()
-        {
-            if (PresentAbsent())
-            {
-                empHours += FULL_TIME;
-            }
-            Console.WriteLine(EMP_RATE_PER_HOUR*empHours);
-        }
-
-
-        
     }
 }
