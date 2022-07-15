@@ -8,17 +8,21 @@ namespace EmpWageCalculation
 {
     public class EmpWages
     {
-        public const int EMP_ABSENT = 0, PART_TIME = 1, FULL_TIME = 2, EMP_RATE_PER_HOUR = 20, FULL_TIME_HOURS = 8, PART_TIME_HOURS = 4;
-        public const int MAX_WORKING_HOURS = 100, MAX_WORKING_DAYS = 20;
-        public EmpWages()
+        public const int EMP_ABSENT = 0, PART_TIME = 1, FULL_TIME = 2, FULL_TIME_HOURS = 8, PART_TIME_HOURS = 4;
+        private int empRatePerHour, NumOfworkingDays, maxHoursPerMonth,totalEmpWage;
+        private string company;
+        public EmpWages(string company, int empRatePerHour, int NumOfworkingDays, int maxHoursPerMonth)
         {
-            Console.WriteLine("Welcome To Employee Wage Problem:\n");
+            this.company = company;
+            this.empRatePerHour = empRatePerHour;
+            this.NumOfworkingDays = NumOfworkingDays;
+            this.maxHoursPerMonth = maxHoursPerMonth;
         }
-        public static int ComputeEmpWage(string company, int empRatePerHour, int NumOfworkingDays,int maxHoursPerMonth)
+        public string  ComputeEmpWage()
         {
-            int totalEmpHrs = 0, totalworkingDays = 0,empHours = 0;
+            int totalEmpHrs = 0, totalworkingDays = 0, empHours = 0;
 
-            while (totalEmpHrs <= MAX_WORKING_HOURS && totalworkingDays < MAX_WORKING_DAYS)
+            while (totalEmpHrs <= this.maxHoursPerMonth && totalworkingDays < this.NumOfworkingDays)
             {
                 totalworkingDays++;
                 Random random = new Random();
@@ -26,7 +30,7 @@ namespace EmpWageCalculation
 
                 switch (empCheck)
                 {
-                    case EMP_ABSENT:                     
+                    case EMP_ABSENT:
                         break;
                     case PART_TIME:
                         empHours = PART_TIME_HOURS;
@@ -36,12 +40,12 @@ namespace EmpWageCalculation
                         break;
                 }
                 totalEmpHrs += empHours;
-                Console.WriteLine($"Day {totalworkingDays}; emp Hours{empHours}" );
+                Console.WriteLine($"Day {totalworkingDays}; emp Hours{empHours}");
             }
-            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine(" Total Emp Wage For Compeny : "+company+" is " + totalEmpWage +"\n");
+            totalEmpWage = totalEmpHrs * this.empRatePerHour;
+           return " Total Emp Wage For Compeny : " + company + " is " + totalEmpWage + "\n";
 
-            return totalEmpWage;
         }
+       
     }
 }
